@@ -1,6 +1,5 @@
 html {
     color: #0000ff;
-    background-color: #000000;
     max-height: 100vh;
     min-height: 100vh;
     width: 100%;
@@ -12,18 +11,6 @@ p {
     padding: 10px;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #0000ff;
-    border-radius: 10px;
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: #000000;
-    border-radius: 10px;
-    width: 10px;
-}
-
 body {
     display: flex;
     flex-direction: row;
@@ -33,24 +20,45 @@ body {
     width: 100%;
     margin: 0px;
     padding: 0px;
-    font-size: 0.4cm;
+    font-size: 0.4m;
     font-family: 'Consolas', 'Courier New', 'Lucida Console', 'Monaco', 'Menlo', 'Liberation Mono', 'DejaVu Sans Mono', 'FreeMono', monospace;
+    text-shadow: -1px -1px 0 #1DA1F2,  
+    1px -1px 0 #000000, 
+   -1px  1px 0 #000000, 
+    1px  1px 0 #000000
 }
 
-
-div#menu{
-    overflow-y: auto; /* Scroll apenas na vertical */
-    overflow-x: hidden; /* Desativa o scroll horizontal */
-    max-height: 70px;
-}
 
 nav {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: center;
+    justify-content: center;
     border-bottom: 1px solid #0000ff;
     text-align: center;
     padding: 0px 10px 0px 10px;
+}
+
+nav a {
+    border: none;
+    color: #0000ff;
+    background-color: #000000;
+    margin: 0px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.6cm;
+    font-family: 'Consolas', 'Courier New', 'Lucida Console', 'Monaco', 'Menlo', 'Liberation Mono', 'DejaVu Sans Mono', 'FreeMono', monospace;
+
+}
+
+nav a:hover {
+    color: #000000;
+    background-color: #0000ff;
+    font-size: 0.8cm;
+    margin: 5px;
+    padding: 15px;
 }
 
 div#conteiner {
@@ -86,10 +94,7 @@ div#content {
     flex-direction: column;
     border: 1px solid #0000ff;
     border-radius: 10px;
-    height: 500px;
     max-width: 550px;
-    margin: 5px;
-    padding: 5px;
 }
 
 .box2 {
@@ -99,10 +104,7 @@ div#content {
     flex-direction: column;
     border: 1px solid #0000ff;
     border-radius: 10px;
-    height: 500px;
     max-width: 300px;
-    margin: 5px;
-    padding: 5px;
 }
 
 .box3 {
@@ -112,12 +114,35 @@ div#content {
     flex-direction: column;
     border: 1px solid #0000ff;
     border-radius: 10px;
-    height: 500px;
-    max-width: 200px;
-    margin: 5px;
-    padding: 5px;
+    max-width: 250px;
 }
 
+.box4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #0000ff;
+    border-radius: 10px;
+    width: 50px;
+    height: 100%;
+}
+
+div#box {
+    height: 400px;
+    margin: 5px;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+
+div#box:hover {
+    border: 3px solid #0000ff;
+    height: 450px;
+    margin: 15px;
+    padding: 15px;
+}
+
+    
 
 button {
     border: none;
@@ -128,13 +153,19 @@ button {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-shadow: -1px -1px 0 #1DA1F2,  
+    1px -1px 0 #000000, 
+   -1px  1px 0 #000000, 
+    1px  1px 0 #000000
+    
 }
 
 button:hover {
     color: #000000;
     background-color: #0000ff;
-    transition: scale(1.2);
+    font-size: 0.5cm;
 }
+
 
 div#site {
     display: flex;
@@ -152,24 +183,4 @@ div#site {
 .null {
     margin: 0px;
     padding: 0px;
-}
-
-div#loading {
-    display: none;
-    background-color: #000000;
-    color: #0000ff;
-    font-size: 24px;
-    padding: 100%;
-    position: fixed;
-}
-
-input {
-    margin: 5px;
-    border: none;
-    color: #0000ff;
-    background-color: #000000;
-    padding: 10px 10px 10px 10px;
-    font-size: inherit;
-    border: 1px solid #0000ff;
-    border-radius: 10px;
 }
