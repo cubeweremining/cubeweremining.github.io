@@ -15,7 +15,8 @@
     <body>
     <div id="conteiner">
     <nav>
-        <a href="https://cubeweremining.github.io">Home</a>
+        <a href="index.html">Home</a>
+        <a href="https://github.com/cubeweremining/SquadHash">SquadHash</a>
         <a href="https://github.com/cubeweremining">Github</a>
         <a href="https://discord.gg/wwYu5p8Yrt">Discord</a>
         <a href="https://x.com/cubeware_cw">X (Twitter)</a>
@@ -23,24 +24,162 @@
 
     <div id="site">
         <div id="content">
- 
-          <div class="box" id="box">
+        <div class="box" id="box1">
+            <div id="snake-game" style="width: 200px; height: 400px; border: 2px solid #333; position: relative; background: #111; overflow: hidden;">
+                <style>
+                  #snake-game .segment {
+                    width: 10px;
+                    height: 10px;
+                    background-color: #00ff00;
+                    position: absolute;
+                  }
+              
+                  #snake-game .bitcoin {
+                    width: 10px;
+                    height: 10px;
+                    font-size: 14px;
+                    color: gold;
+                    position: absolute;
+                    text-align: center;
+                    line-height: 10px;
+                    pointer-events: none;
+                  }
+              
+                  #snake-game .score {
+                    position: absolute;
+                    top: 5px;
+                    left: 5px;
+                    font-size: 12px;
+                    color: #fff;
+                    z-index: 10;
+                    font-family: Arial, sans-serif;
+                  }
+              
+                  #snake-game .start-btn {
+                    position: absolute;
+                    top: 40%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    padding: 8px 16px;
+                    background: gold;
+                    color: #111;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    z-index: 20;
+                  }
+                </style>
+              
+                <div class="score" id="score">Score: 0</div>
+                <div class="bitcoin" id="bitcoin">₿</div>
+                <button class="start-btn" id="startBtn">Play Game</button>
+              
+                <script>
+                  const game = document.getElementById("snake-game");
+                  const scoreDisplay = document.getElementById("score");
+                  const bitcoin = document.getElementById("bitcoin");
+                  const startBtn = document.getElementById("startBtn");
+              
+                  const gridSize = 10;
+                  const columns = game.clientWidth / gridSize;
+                  const rows = game.clientHeight / gridSize;
+              
+                  let snake = [{ x: 5, y: 5 }];
+                  let direction = { x: 0, y: 1 };
+                  let score = 0;
+                  let intervalId = null;
+                  let running = false;
+              
+                  function drawSnake() {
+                    game.querySelectorAll(".segment").forEach(e => e.remove());
+                    snake.forEach(part => {
+                      const seg = document.createElement("div");
+                      seg.className = "segment";
+                      seg.style.left = part.x * gridSize + "px";
+                      seg.style.top = part.y * gridSize + "px";
+                      game.appendChild(seg);
+                    });
+                  }
+              
+                  function moveSnake() {
+                    if (!running) return;
+              
+                    const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+              
+                    if (head.x < 0 || head.x >= columns || head.y < 0 || head.y >= rows ||
+                        snake.some(seg => seg.x === head.x && seg.y === head.y)) {
+                      return gameOver();
+                    }
+              
+                    snake.unshift(head);
+              
+                    if (head.x === bitcoinX && head.y === bitcoinY) {
+                      score++;
+                      scoreDisplay.textContent = "Score: " + score;
+                      placeBitcoin();
+                    } else {
+                      snake.pop();
+                    }
+              
+                    drawSnake();
+                  }
+              
+                  function gameOver() {
+                    clearInterval(intervalId);
+                    alert("Game Over! Pontuação: " + score);
+                    location.reload();
+                  }
+              
+                  let bitcoinX = 0;
+                  let bitcoinY = 0;
+              
+                  function placeBitcoin() {
+                    bitcoinX = Math.floor(Math.random() * columns);
+                    bitcoinY = Math.floor(Math.random() * rows);
+                    bitcoin.style.left = bitcoinX * gridSize + "px";
+                    bitcoin.style.top = bitcoinY * gridSize + "px";
+                  }
+              
+                  document.addEventListener("keydown", e => {
+                    if (!running) return;
+                    switch (e.key) {
+                      case "ArrowUp": if (direction.y !== 1) direction = { x: 0, y: -1 }; break;
+                      case "ArrowDown": if (direction.y !== -1) direction = { x: 0, y: 1 }; break;
+                      case "ArrowLeft": if (direction.x !== 1) direction = { x: -1, y: 0 }; break;
+                      case "ArrowRight": if (direction.x !== -1) direction = { x: 1, y: 0 }; break;
+                    }
+                  });
+              
+                  startBtn.addEventListener("click", () => {
+                    startBtn.style.display = "none";
+                    running = true;
+                    placeBitcoin();
+                    drawSnake();
+                    intervalId = setInterval(moveSnake, 150);
+                  });
+                </script>
+              </div>
+                        
+        </div>
+         
+        <div id="box" class="box">
             <h1>Cubeware</h1>
             <p>Cubewere is an innovative company in the cryptocurrency mining sector, focused on providing accessible and efficient solutions for miners of all levels...</p>
             <p>We stand out for our constant updates, ensuring that our users have access to the latest optimizations in performance and security...</p>
         </div>
 
-        <div class="box2" id="box">
+        <div id="box2" class="box">
             <h1>SquadHash</h1>
             <p>SquadHash is a powerful and user-friendly platform designed to simplify your journey into the world of cryptocurrencies...</p>
-            <button onclick="window.open('https://github.com/cubeweremining/SquadHash', '_blank')">SquadHash | Github</button>
         </div>
 
-        <div class="box3" id="box">
+        <div id="box3" class="box">
             <div id="bitcoin-bar">
             Loading Bitcoin price...
+            </div>
         </div>
-        </div>
+
     </div>
     </div>
     </div>
