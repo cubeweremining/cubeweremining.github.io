@@ -1,41 +1,33 @@
-html {
-    color: #0000ff;
-    max-height: 100vh;
-    min-height: 100vh;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-}
-
 p {
     padding: 10px;
 }
 
+
 body {
     display: flex;
-    flex-direction: row;
-    justify-content: start;
-    max-height: 100vh;
-    min-height: 100vh;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
+    flex-direction: column;
+    height: 100vh; /* 100% da altura da tela */
+    margin: 0;
+    padding: 0;    
     font-size: 0.4m;
     font-family: 'Consolas', 'Courier New', 'Lucida Console', 'Monaco', 'Menlo', 'Liberation Mono', 'DejaVu Sans Mono', 'FreeMono', monospace;
     text-shadow: -1px -1px 0 #1DA1F2,  
     1px -1px 0 #000000, 
    -1px  1px 0 #000000, 
-    1px  1px 0 #000000
+    1px  1px 0 #000000;
+    background-color: #000000;
+    color: #0000ff;
 }
 
 
 nav {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: center;
     justify-content: center;
-    border-bottom: 1px solid #0000ff;
     text-align: center;
     padding: 0px 10px 0px 10px;
+    flex-wrap: wrap
 }
 
 nav a {
@@ -49,6 +41,7 @@ nav a {
     transition: all 0.3s ease;
     text-decoration: none;
     font-size: 0.6cm;
+    flex-shrink: 0;
     font-family: 'Consolas', 'Courier New', 'Lucida Console', 'Monaco', 'Menlo', 'Liberation Mono', 'DejaVu Sans Mono', 'FreeMono', monospace;
 
 }
@@ -61,19 +54,10 @@ nav a:hover {
     padding: 15px;
 }
 
-div#conteiner {
-    display: flex;
-    flex-direction: column;
-    color: #0000ff;
-    background-color: #000000;
-    min-height: 100%;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-}
 
 
 div#content {
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -82,9 +66,10 @@ div#content {
     z-index: 1;
     flex-direction: row;
     height: 100%;
-    width: 200%;
+    width: 100%;
     margin: 0px;
     padding: 0px;
+    flex: 1;
 }
 
 div#box {
@@ -99,17 +84,17 @@ div#box {
 
 }
 
-div#box1 {
+div#box1, div#box2 {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     border: 1px solid #0000ff;
     border-radius: 10px;
-    width: 200px;
+    width: 400px;
 }
 
-div#box2 {
+div#box3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,10 +102,14 @@ div#box2 {
     border: 1px solid #0000ff;
     border-radius: 10px;
     min-width: 200px;
-    max-width: 300px;
+    max-width: 225px;
 }
 
-div#box3 {
+img {
+    min-width: 190px;
+}
+
+div#box3, div#box4 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -168,17 +157,6 @@ button:hover {
     background-color: #0000ff;
     font-size: 0.5cm;
 }
-
-
-div#site {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-}
-
 
 
 .p5px {padding: 5px;}
